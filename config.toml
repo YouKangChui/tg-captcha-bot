@@ -19,7 +19,7 @@ print_success_and_fail_messages_strategy = "del"
 welcome_timeout = "300"
 
 # If the new user does not press the button, the bot will ban the user for this duration of time. Can be "forever" or number of minutes ("10")
-ban_duration = "2"
+ban_duration = "3"
 
 # Do you want to use a socks5 proxy server? Can be "yes" or "no"
 use_socks5_proxy = "no"
