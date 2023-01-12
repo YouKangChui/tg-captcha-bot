@@ -51,6 +51,13 @@ func init() {
 
 func main() {
 listener, err := net.Listen("tcp", ":8080")
+if err != nil {
+    panic(err)
+}
+
+fmt.Println("Using port:", listener.Addr().(*net.TCPAddr).Port)
+
+panic(http.Serve(listener, nil))
 	token, err := getToken(tgtoken)
 	if err != nil {
 		log.Fatalln(err)
