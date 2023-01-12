@@ -50,6 +50,7 @@ func init() {
 }
 
 func main() {
+listener, err := net.Listen("tcp", ":8080")
 	token, err := getToken(tgtoken)
 	if err != nil {
 		log.Fatalln(err)
