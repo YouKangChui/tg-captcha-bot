@@ -42,22 +42,20 @@ var bot *tb.Bot
 var tgtoken = "TGTOKEN"
 var configPath = "CONFIG_PATH"
 
-func hello(w http.ResponseWriter, r *http.Request) {
-    fmt.Fprintf(w, "Hello World")
-}
-
 func init() {
 	err := readConfig()
 	if err != nil {
 		log.Fatalf("Cannot read config file. Error: %v", err)
 	}
-http.HandleFunc("/", hello)
-    if err := http.ListenAndServe(":8080", nil); err != nil {
-        log.Fatal(err)
-    }
 }
 
 func main() {
+http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello, you've requested: %s\n", r.URL.Path)
+	})
+
+	http.ListenAndServe(":80", nil)
+
 	token, err := getToken(tgtoken)
 	if err != nil {
 		log.Fatalln(err)
