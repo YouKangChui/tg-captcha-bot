@@ -99,7 +99,7 @@ func main() {
 	<-signalChan
 	log.Println("Shutdown signal received, exiting...")
 http.HandleFunc("/", hello)
-    if err := http.ListenAndServe(":8080", nil); err != nil {
+    if err := http.ListenAndServe(":8081", nil); err != nil {
         log.Fatal(err)
     }
 }
