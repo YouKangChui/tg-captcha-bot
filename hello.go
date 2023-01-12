@@ -1,3 +1,5 @@
+package hello
+
 import (
     "fmt"
     "log"
