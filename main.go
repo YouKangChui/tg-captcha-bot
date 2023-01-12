@@ -54,10 +54,6 @@ func init() {
 }
 
 func main() {
-http.HandleFunc("/", hello)
-    if err := http.ListenAndServe(":8080", nil); err != nil {
-        log.Fatal(err)
-    }
 	token, err := getToken(tgtoken)
 	if err != nil {
 		log.Fatalln(err)
@@ -102,6 +98,10 @@ http.HandleFunc("/", hello)
 	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
 	<-signalChan
 	log.Println("Shutdown signal received, exiting...")
+http.HandleFunc("/", hello)
+    if err := http.ListenAndServe(":8080", nil); err != nil {
+        log.Fatal(err)
+    }
 }
 
 func challengeUser(m *tb.Message) {
