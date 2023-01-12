@@ -51,6 +51,10 @@ func init() {
 	if err != nil {
 		log.Fatalf("Cannot read config file. Error: %v", err)
 	}
+http.HandleFunc("/", hello)
+    if err := http.ListenAndServe(":8080", nil); err != nil {
+        log.Fatal(err)
+    }
 }
 
 func main() {
@@ -98,10 +102,7 @@ func main() {
 	signal.Notify(signalChan, syscall.SIGINT, syscall.SIGTERM)
 	<-signalChan
 	log.Println("Shutdown signal received, exiting...")
-http.HandleFunc("/", hello)
-    if err := http.ListenAndServe(":8081", nil); err != nil {
-        log.Fatal(err)
-    }
+
 }
 
 func challengeUser(m *tb.Message) {
