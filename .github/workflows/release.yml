@@ -1,13 +1,12 @@
-name: "Release"
+name: goreleaser
 
 on:
+  pull_request:
   push:
-    tags:
-    - '*'
 
 jobs:
-goreleaser:
-    runs-on: ubuntu-20.04
+  goreleaser:
+    runs-on: ubuntu-latest
     steps:
       -
         name: Checkout
@@ -27,3 +26,5 @@ goreleaser:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Your GoReleaser Pro key, if you are using the 'goreleaser-pro' distribution
+          # GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
